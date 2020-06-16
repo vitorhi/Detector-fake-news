@@ -1,0 +1,31 @@
+{% extends "public/templates/public_template.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+	    <h1>Verdadeiro ou Falso? </h1>
+	    <form action="/" method="POST">
+		  <div class="form-group">
+		    <label>Copie e cole a notícia</label>
+		    <input type="text" class="form-control" id="noticia" name="noticia" placeholder="Insira a notícia">
+		  </div>
+		  <button type="submit" class="btn btn-primary">Verificar</button>
+		</form>
+		{% if text %}
+		<p class="text-danger float-right">{{ text }}</p>
+		{% endif %}
+		
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+{% block script %}
+<!-- <script>
+  alert("Template inheritance is awesome");
+</script> -->
+{% endblock %}
