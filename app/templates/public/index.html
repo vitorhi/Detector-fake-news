@@ -10,17 +10,29 @@
 	    <h1>Verdadeiro ou Falso? </h1>
 	    <form action="/" method="POST">
 		  <div class="form-group">
-		    <label>Copie e cole a notícia</label>
-		    <input type="text" class="form-control" id="noticia" name="noticia" placeholder="Insira a notícia">
+		    <label>Verifique a notícia colando <strong>toda</strong> a notícia abaixo</label>
+		    {% if text %}
+		    <textarea style="height:300px"  type="text" class="form-control" id="noticia" name="noticia" placeholder="Insira a notícia">{{text}}</textarea>
+		    {%else%}
+		    <textarea style="height:300px"  type="text" class="form-control" id="noticia" name="noticia" placeholder="Insira a notícia">{{text}}</textarea>
+		    {%endif%}
 		  </div>
-		  <button type="submit" class="btn btn-primary">Verificar</button>
-		</form>
-		{% if text %}
-		<p class="text-danger float-right">{{ text }}</p>
-		{% endif %}
-		
+		  <div class="row">
+		  	<div class="col">
+			  <button type="submit" class="btn btn-primary">Verificar</button>
+			</div>
+			<div class='row'>
+		    	{% if resultado == "Falsa" %}
+					<h2 class="alert alert-danger " role="alert"> A notícia é provavelmente {{ resultado }}, verifique as fontes!</h2>
+				{%elif resultado == "Verdadeira"%}
+					<h2 class="alert alert-success" role="alert">A notícia é provavelmente {{ resultado }}, verifique as fontes!</h2>
+				{% endif %}
+		    </div>
+		   </div>
+		</form>		
     </div>
   </div>
+  
 </div>
 
 {% endblock %}

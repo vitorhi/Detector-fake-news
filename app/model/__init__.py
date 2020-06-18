@@ -1,0 +1,1 @@
+from app.model.detector import detector_predict

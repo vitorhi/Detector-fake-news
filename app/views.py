@@ -1,6 +1,10 @@
 from flask import render_template
 from flask import request, redirect
 from app import app
+from app import model
+import numpy as np
+from joblib import load
+
 
 
 @app.route("/",methods=['POST','GET'])
@@ -9,9 +13,10 @@ def index():
 
 		req = request.form
 		text=req["noticia"]
-		print(text)
+		resultado=model.detector_predict(text)
 
-		return render_template("public/index.html",text=text)
+
+		return render_template("public/index.html",resultado=resultado, text=text)
 		
 	return render_template("public/index.html")
 
